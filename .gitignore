@@ -23,3 +23,7 @@ hs_err_pid*
 
 # IDEA files
 *.iml
+.idea
+
+@ Spring boot
+config
