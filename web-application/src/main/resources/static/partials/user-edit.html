@@ -1,0 +1,30 @@
+<form novalidate name="userForm" class="admin-form" ng-submit="updateObject()">
+    <fieldset>
+        <div>
+            <label for="userName">User Name</label>
+            <input type="text" ng-model="user.username" id="userName" name="userName" required placeholder="Enter user name"/>
+            <div ng-show="userForm.userName.$touched">
+                <div class="form-error" ng-show="userForm.userName.$error.required">User name is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="userPassword">Password</label>
+            <input type="text" ng-model="user.password" id="userPassword" name="userPassword" required placeholder="Enter password"/>
+            <div ng-show="userForm.userPassword.$touched">
+                <div class="form-error" ng-show="userForm.userPassword.$error.required">Password is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="userEnabled">Enabled</label>
+            <input type="checkbox" id="userEnabled" ng-model="user.enabled" />
+        </div>
+        <div>
+            <label for="adminUser">Admin User</label>
+            <input type="checkbox" id="adminUser" ng-model="user.adminUser" />
+        </div>
+    </fieldset>
+    <div>
+        <input type="button" ui-sref="users" value="Cancel"/>
+        <input type="submit" ng-disabled="userForm.$invalid" value="Save"/>
+    </div>
+</form>

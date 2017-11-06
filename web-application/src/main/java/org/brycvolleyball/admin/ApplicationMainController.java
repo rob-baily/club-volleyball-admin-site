@@ -21,47 +21,11 @@ public class ApplicationMainController {
     @RequestMapping("/")
     public String index(Model model) {
         modelSetupService.setupModel(model);
-        return "V2xMain";
-    }
-
-    @RequestMapping("/testDriver")
-    public String testDriver(Model model) {
-        return "TestDriver";
-    }
-
-    @RequestMapping("/asnTesting")
-    public String asnTesting(Model model) {
-        return "ASNTesting";
-    }
-
-    @RequestMapping("/messageGeneration")
-    public String messageGeneration(Model model) {
-        return "MessageGeneration";
-    }
-
-    @RequestMapping("/availabilityAreaSetup")
-    public String availabilityAreaSetup(Model model) {
-        return "AvailabilityAreaSetup";
-    }
-
-    @RequestMapping("/mapMessage")
-    public String mapMessage(Model model) {
-        return "MAPMessage";
-    }
-
-    @RequestMapping("/plottingTool")
-    public String plottingTool(Model model) {
-        return "PlottingTool";
+        return "ApplicationMain";
     }
 
     @RequestMapping("/login")
     public String login(Model model) {
         return "Login";
     }
-
-    @RequestMapping("/parkingConfiguration")
-    public String parkingConfiguration(Model model) { return "ParkingConfiguration"; }
-
-    @RequestMapping("/kiosk/parking")
-    public String parkingKiosk(Model model) { return "ParkingKiosk"; }
 }

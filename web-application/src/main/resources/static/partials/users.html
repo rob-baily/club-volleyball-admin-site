@@ -1,0 +1,39 @@
+<div class="search">
+    <!--Sidebar content-->
+    Search: <input ng-model="usernameFilter" size="16">
+</div>
+<div class="datagrid">
+<table>
+    <thead>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>Enabled</th>
+        <th>Administrator</th>
+        <th>Actions</th>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                <div>
+                <ul>
+                    <li>
+                        <a ui-sref="addUser">Add User</a>
+                    </li>
+                </ul>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    <tr ng-repeat="user in users | filter:{username:usernameFilter} | orderBy:'userName'" ng-class-even="class='alt'">
+        <td><a ui-sref="editUser({objectLink: '{{user._links.self.href}}' })">{{user.username}}</a></td>
+        <td>{{user.password}}</td>
+        <td>{{user.enabled}}</td>
+        <td>{{user.adminUser}}</td>
+        <td>
+            <a class="button" ng-click="deleteObject(user)">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,10 @@
+<div class="datagrid">
+<table>
+    <thead>
+        <th>Administration Areas</th>
+    </thead>
+    <tr ng-repeat="adminItem in adminList | orderBy:'name'" ng-class-even="class='alt'">
+        <td><a ng-click="goToPage(adminItem.view)">{{adminItem.name}}</a></td>
+    </tr>
+</table>
+</div>

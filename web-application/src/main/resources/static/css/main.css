@@ -1,0 +1,228 @@
+[ng-click], [ui-sref], input[type=submit]:not([disabled]) {
+    cursor: pointer;
+}
+
+.search {
+    padding-bottom: 10px;
+}
+
+.admin-form {
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    display: inline-block;
+}
+
+.admin-form label, legend {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-left: 3px;
+    padding: 4px;
+    text-shadow: 2px 2px 3px rgba(150, 150, 150, 0.75);
+}
+
+.admin-form input[type=submit],.admin-form input[type=button] {
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 1px;
+    color: #FFFFFF;
+    border: 1px solid #006699;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F));
+    background: -moz-linear-gradient( center top, #006699 5%, #00557F 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+    background-color: #006699;
+}
+
+.admin-form input[type=submit][disabled] {
+    background: none;
+    background-color: #AAAAAA;
+}
+
+.admin-form div.form-error {
+    color: red;
+}
+
+.admin-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+}
+
+.admin-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+}
+/* Captured from http://tablestyler.com/ then formatted using http://unminify.com/ */
+.datagrid table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.datagrid {
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #fff;
+    overflow: hidden;
+    border: 1px solid #006699;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.datagrid table td,
+.datagrid table th {
+    padding: 3px 10px;
+}
+
+.datagrid table thead th {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F));
+    background: -moz-linear-gradient( center top, #006699 5%, #00557F 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+    background-color: #006699;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    border-left: 1px solid #0070A8;
+}
+
+.datagrid table thead th:first-child {
+    border: none;
+}
+
+.datagrid table tbody td {
+    color: #00557F;
+    border-left: 1px solid #00557F;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.datagrid table tbody .alt td {
+    background: #E1EEf4;
+    color: #00557F;
+}
+
+.datagrid table tbody td:first-child {
+    border-left: none;
+}
+
+.datagrid table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.datagrid table tfoot td div {
+    border-top: 1px solid #006699;
+    background: #E1EEf4;
+}
+
+.datagrid table tfoot td {
+    padding: 0;
+    font-size: 12px
+}
+
+.datagrid table tfoot td div {
+    padding: 2px;
+}
+
+.datagrid table tfoot td ul {
+    margin: 0;
+    padding: 0;
+    padding-right: 25px;
+    list-style: none;
+    text-align: left;
+    display: inline;
+}
+
+.datagrid table tfoot li {
+    display: inline;
+}
+
+.datagrid table tfoot li a, .datagrid table tbody a.button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 1px;
+    color: #FFFFFF;
+    border: 1px solid #006699;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F));
+    background: -moz-linear-gradient( center top, #006699 5%, #00557F 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');
+    background-color: #006699;
+}
+
+.datagrid table tfoot li.disabled a, .datagrid table tfoot li.disabled a:hover {
+    background: none;
+    background-color: #AAAAAA;
+    cursor: default;
+    pointer-events: none;
+}
+
+.datagrid table tfoot li.active a, .datagrid table tfoot li.active a:hover {
+    background: none;
+    background-color: #0606BB;
+    cursor: default;
+}
+
+.datagrid table tfoot ul.active,
+.datagrid table tfoot ul a:hover, .datagrid table tbody a.button:hover {
+    text-decoration: none;
+    border-color: #00557F;
+    color: #FFFFFF;
+    background: none;
+    background-color: #006699;
+}
+
+div.dhtmlx_window_active,
+div.dhx_modal_cover_dv {
+    position: fixed !important;
+}
+
+.angucomplete-alt {
+    display: inline-block;
+}
+
+.angucomplete-holder {
+    position: relative;
+}
+
+.angucomplete-dropdown {
+    border-color: #ececec;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    width: 250px;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 9999;
+    position: absolute;
+    margin-top: -6px;
+    background-color: #ffffff;
+}
+
+.angucomplete-searching {
+    color: #acacac;
+    font-size: 14px;
+}
+
+.angucomplete-description {
+    font-size: 14px;
+}
+
+.angucomplete-row {
+    padding: 5px;
+    color: #000000;
+    margin-bottom: 4px;
+    clear: both;
+}
+
+.angucomplete-selected-row {
+    background-color: lightblue;
+    color: #ffffff;
+}
+
+.highlight-autocomplete {
+    color: #ff0000;
+}
