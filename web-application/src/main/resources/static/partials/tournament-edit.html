@@ -1,0 +1,29 @@
+<form novalidate name="tournamentForm" class="admin-form" ng-submit="updateObject()">
+    <fieldset>
+        <div>
+            <label for="tournamentName">Tournament Name</label>
+            <input type="text" ng-model="tournament.name" id="tournamentName" name="tournamentName" required placeholder="Enter tournament name"/>
+            <div ng-show="tournamentForm.tournamentName.$touched">
+                <div class="form-error" ng-show="tournamentForm.tournamentName.$error.required">Tournament name is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="location">Location</label>
+            <input type="text" ng-model="tournament.location" id="location" name="location" required placeholder="Enter location city,state"/>
+            <div ng-show="tournamentForm.location.$touched">
+                <div class="form-error" ng-show="tournamentForm.location.$error.required">Location is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="startDate">Start Date</label>
+            <input type="date" ng-model="tournament.startDate" id="startDate" name="startDate" required placeholder="Enter tournament starting date"/>
+            <div ng-show="tournamentForm.startDate.$touched">
+                <div class="form-error" ng-show="tournamentForm.startDate.$error.required">Start Date is required!</div>
+            </div>
+        </div>
+    </fieldset>
+    <div>
+        <input type="button" ui-sref="tournaments" value="Cancel"/>
+        <input type="submit" ng-disabled="tournamentForm.$invalid" value="Save"/>
+    </div>
+</form>

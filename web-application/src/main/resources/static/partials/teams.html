@@ -1,0 +1,35 @@
+<div class="search">
+    <!--Sidebar content-->
+    Search: <input ng-model="teamNameFilter" size="16">
+</div>
+<div class="datagrid">
+<table>
+    <thead>
+        <th>Team Name</th>
+        <th>Coach</th>
+        <th>Actions</th>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <div>
+                <ul>
+                    <li>
+                        <a ui-sref="addTeam">Add Team</a>
+                    </li>
+                </ul>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    <tr ng-repeat="team in teams | filter:{teamName:teamNameFilter} | orderBy:'teamName'" ng-class-even="class='alt'">
+        <td><a ui-sref="editTeam({objectLink: '{{team._links.self.href}}' })">{{team.teamName}}</a></td>
+        <td>{{team.coach}}</td>
+        <td>
+            <a class="button" ng-click="deleteObject(team)">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
