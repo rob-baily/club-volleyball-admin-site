@@ -13,6 +13,7 @@ public class ApplicationUser implements Serializable {
     private String internalId;
     private String password;
     private String username;
+    private String email;
     private boolean enabled;
     private boolean adminUser;
 
@@ -30,6 +31,14 @@ public class ApplicationUser implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public boolean isEnabled() {

@@ -15,6 +15,13 @@
             </div>
         </div>
         <div>
+            <label for="userEmail">E-Mail</label>
+            <input type="email" ng-model="user.email" id="userEmail" name="userEmail" required placeholder="Enter email"/>
+            <div ng-show="userForm.userEmail.$touched">
+                <div class="form-error" ng-show="userForm.userEmail.$error.required">E-Mail is required!</div>
+            </div>
+        </div>
+        <div>
             <label for="userEnabled">Enabled</label>
             <input type="checkbox" id="userEnabled" ng-model="user.enabled" />
         </div>
