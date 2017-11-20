@@ -10,11 +10,13 @@
         <th>Entry Fee</th>
         <th>Priority</th>
         <th>Status</th>
+        <th>Check #</th>
+        <th>Check Date</th>
         <th>Actions</th>
     </thead>
     <tfoot>
         <tr>
-            <td colspan="6">
+            <td colspan="8">
                 <div>
                 <ul>
                     <li>
@@ -32,6 +34,8 @@
         <td>{{tournamententry.entryFee | currency}}</td>
         <td>{{tournamententry.priority}}</td>
         <td>{{tournamententry.status}}</td>
+        <td>{{tournamententry.checkNumber}}</td>
+        <td>{{tournamententry.checkDate| date : 'MM/dd/yyyy'}}</td>
         <td>
             <a class="button" ng-click="deleteObject(tournamententry)">Delete</a>
         </td>

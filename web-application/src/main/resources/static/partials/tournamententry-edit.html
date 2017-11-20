@@ -29,7 +29,7 @@
         </div>
         <div>
             <label for="priority">Priority</label>
-            <input type="number" ng-model="tournamententry.priority" id="priority" name="priority" placeholder="Enter priority"/>
+            <input type="number" ng-model="tournamententry.priority" id="priority" name="priority" placeholder="Enter priority if multiple tournaments planned for same weekend"/>
         </div>
         <div>
             <label for="status">Status</label>
@@ -40,6 +40,14 @@
             <div ng-show="tournamentEntryForm.status.$touched">
                 <div class="form-error" ng-show="tournamentEntryForm.status.$error.required">Status is required!</div>
             </div>
+        </div>
+        <div>
+            <label for="checkNumber">Check Number</label>
+            <input type="number" ng-model="tournamententry.checkNumber" id="checkNumber" name="checkNumber"/>
+        </div>
+        <div>
+            <label for="checkDate">Check Date</label>
+            <input type="date" ng-model="tournamententry.checkDate" id="checkDate" name="checkDate"/>
         </div>
     </fieldset>
     <div>

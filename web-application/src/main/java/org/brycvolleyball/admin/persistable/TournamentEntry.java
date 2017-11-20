@@ -1,5 +1,7 @@
 package org.brycvolleyball.admin.persistable;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 
 public class TournamentEntry {
@@ -20,6 +22,8 @@ public class TournamentEntry {
 	double entryFee;
 	Integer priority;
 	StatusType status;
+	Integer checkNumber;
+	Date checkDate;
 
 	public String getTournamentEntryId() {
 		return tournamentEntryId;
@@ -67,5 +71,21 @@ public class TournamentEntry {
 
 	public void setPriority(Integer priority) {
 		this.priority = priority;
+	}
+
+	public Integer getCheckNumber() {
+		return checkNumber;
+	}
+
+	public void setCheckNumber(Integer checkNumber) {
+		this.checkNumber = checkNumber;
+	}
+
+	public Date getCheckDate() {
+		return checkDate;
+	}
+
+	public void setCheckDate(Date checkDate) {
+		this.checkDate = checkDate;
 	}
 }
