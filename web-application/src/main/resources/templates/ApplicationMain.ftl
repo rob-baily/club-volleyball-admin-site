@@ -15,7 +15,7 @@
 <body>
 <table>
     <tr><td>
-        <a href="/"><img src="/images/BRYCLogo.png" height="32" alt="BRYC!!"/></a>
+        <a ui-sref="adminList"><img src="/images/BRYCLogo.png" height="32" alt="BRYC!!"/></a>
     </td>
         <td>
             <h3><a ui-sref="modulesList">Modules</a></h3>

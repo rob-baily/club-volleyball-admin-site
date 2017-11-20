@@ -1,10 +1,18 @@
 <div class="datagrid">
-<table>
-    <thead>
+    <table>
+        <thead>
+        <th>User Operations</th>
+        </thead>
+        <tr ng-repeat="operationalItem in operationalList | orderBy:'name'" ng-class-even="class='alt'">
+            <td><a ng-click="goToPage(operationalItem.view)">{{operationalItem.name}}</a></td>
+        </tr>
+    </table>
+    <table>
+        <thead>
         <th>Administration Areas</th>
-    </thead>
-    <tr ng-repeat="adminItem in adminList | orderBy:'name'" ng-class-even="class='alt'">
-        <td><a ng-click="goToPage(adminItem.view)">{{adminItem.name}}</a></td>
-    </tr>
-</table>
+        </thead>
+        <tr ng-repeat="adminItem in adminList | orderBy:'name'" ng-class-even="class='alt'">
+            <td><a ng-click="goToPage(adminItem.view)">{{adminItem.name}}</a></td>
+        </tr>
+    </table>
 </div>

@@ -68,12 +68,14 @@ angular.module("mainApp.services", ['spring-data-rest-crud'])
 });
 
 angular.module('mainApp.controllers', []).controller('AdminListController', function($scope, $state) {
-  $scope.adminList = [
-      { name: "Teams", view: "teams"},
-      { name: "Tournaments", view: "tournaments"},
-      { name: "Tournament Entries", view: "tournamententrys"},
-      { name: "Users", view: "users"}
-  ];
+    $scope.operationalList = [
+        { name: "Tournaments", view: "tournaments"},
+        { name: "Tournament Entries", view: "tournamententrys"},
+    ];
+    $scope.adminList = [
+        { name: "Teams", view: "teams"},
+        { name: "Users", view: "users"}
+    ];
 
   $scope.goToPage = function(pageView) {
     console.log("go to page");
