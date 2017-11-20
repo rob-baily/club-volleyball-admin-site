@@ -4,6 +4,26 @@ var dataAdminApp = angular.module('mainApp', ['ui.router', 'ngResource', 'anguco
     'spring-data-rest', 'spring-data-rest-crud',
     'mainApp.services', 'mainApp.controllers']);
 
+function TournamententryHelper(teamRestResource, tournamentRestResource) {
+    this.setupValues = function (scope) {
+        scope.statusList = [
+            "Submitted",
+            "Registered",
+            "Paid",
+            "Accepted",
+            "Withdrawn",
+            "Cancelled"
+        ];
+        scope.tournamententry.status = "Submitted";
+        teamRestResource.query(function (response) {
+            scope.teamList = response;
+        });
+        tournamentRestResource.query(function (response) {
+            scope.tournamentList = response;
+        });
+    }
+};
+
 angular.module("mainApp.services", ['spring-data-rest-crud'])
   .factory('AdminObjectService', function(SpringDataRestObjectService) {
       return SpringDataRestObjectService.getInstance();
@@ -35,12 +55,23 @@ angular.module("mainApp.services", ['spring-data-rest-crud'])
     console.log("create TournamentControllerManager");
     return SpringDataRestController.getInstance(TournamentStateManager,TournamentRestResource);
 
+}).factory('TournamentEntryRestResource', function(SpringDataRestResource) {
+    return SpringDataRestResource.getInstance('/api/tournamentEntries/');
+}).factory('TournamentEntryStateManager', function(SpringDataRestStateManager) {
+    console.log("create TournamentEntryStateManager");
+    return SpringDataRestStateManager.getInstance('tournamententry');
+}).factory('TournamentEntryControllerManager', function(SpringDataRestController, TournamentEntryStateManager, TournamentEntryRestResource) {
+    console.log("create TournamentEntryControllerManager");
+    return SpringDataRestController.getInstance(TournamentEntryStateManager,TournamentEntryRestResource);
+}).factory('TournamententryHelperManager', function(TeamRestResource, TournamentRestResource) {
+    return new TournamententryHelper(TeamRestResource, TournamentRestResource);
 });
 
 angular.module('mainApp.controllers', []).controller('AdminListController', function($scope, $state) {
   $scope.adminList = [
       { name: "Teams", view: "teams"},
       { name: "Tournaments", view: "tournaments"},
+      { name: "Tournament Entries", view: "tournamententrys"},
       { name: "Users", view: "users"}
   ];
 
@@ -70,6 +101,15 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
 }).controller('TournamentAddController', function($scope, $state, TournamentControllerManager) {
     TournamentControllerManager.controlAdd($scope, $state);
 
+}).controller('TournamententryListController', function($scope, $state, TournamentEntryControllerManager) {
+    TournamentEntryControllerManager.controlList($scope, $state);
+}).controller('TournamententryEditController', function($scope, $state, $stateParams, TournamentEntryControllerManager, TournamententryHelperManager) {
+    TournamentEntryControllerManager.controlEdit($scope, $state, $stateParams);
+    TournamententryHelperManager.setupValues($scope);
+}).controller('TournamententryAddController', function($scope, $state, TournamentEntryControllerManager, TournamententryHelperManager) {
+    TournamentEntryControllerManager.controlAdd($scope, $state);
+    TournamententryHelperManager.setupValues($scope);
+
 });
 
 var $stateProviderRef = null;
@@ -81,9 +121,10 @@ angular.module('mainApp').config(function($stateProvider) {
   });
 
   $stateProviderRef = $stateProvider;
-}).run(function($state, TeamStateManager, TournamentStateManager, UserStateManager) {
+}).run(function($state, TeamStateManager, TournamentStateManager, TournamentEntryStateManager, UserStateManager) {
     TeamStateManager.setupStates($stateProviderRef);
     TournamentStateManager.setupStates($stateProviderRef);
+    TournamentEntryStateManager.setupStates($stateProviderRef);
     UserStateManager.setupStates($stateProviderRef);
   $state.go('adminList'); //make a transition to users state when app starts
 });

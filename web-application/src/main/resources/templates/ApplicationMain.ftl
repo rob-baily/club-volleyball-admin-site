@@ -2,7 +2,7 @@
 <html lang="en" ng-app="mainApp">
 <head>
     <meta charset="utf-8">
-    <title>eTrans Data Administration</title>
+    <title>BRYC Data Administration</title>
     <script src="/javascript/angularjs/angular.js"></script>
     <script src="/javascript/angularjs/angular-resource.js"></script>
     <script src="/javascript/angularjs/angular-ui-router.js"></script>
@@ -15,7 +15,7 @@
 <body>
 <table>
     <tr><td>
-        <img src="/images/BRYCLogo.png" height="32" alt="BRYC!!"/>
+        <a href="/"><img src="/images/BRYCLogo.png" height="32" alt="BRYC!!"/></a>
     </td>
         <td>
             <h3><a ui-sref="modulesList">Modules</a></h3>

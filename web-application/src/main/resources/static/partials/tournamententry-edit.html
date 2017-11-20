@@ -1,0 +1,49 @@
+<form novalidate name="tournamentEntryForm" class="admin-form" ng-submit="updateObject()">
+    <fieldset>
+        <div>
+            <label for="tournamentName">Tournament Name</label>
+            <select id="tournamentName" name="tournamentName" required ng-model="tournamententry.tournamentName"
+                    ng-options="item.name as item.name for item in tournamentList">
+                <option value="">Select Tournament</option>
+            </select>
+            <div ng-show="tournamentEntryForm.tournamentName.$touched">
+                <div class="form-error" ng-show="tournamentEntryForm.tournamentName.$error.required">Tournament name is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="teamName">Team Name</label>
+            <select id="teamName" name="teamName" required ng-model="tournamententry.teamName"
+                    ng-options="item.teamName as item.teamName for item in teamList">
+                <option value="">Select Team</option>
+            </select>
+            <div ng-show="tournamentEntryForm.teamName.$touched">
+                <div class="form-error" ng-show="tournamentEntryForm.teamName.$error.required">Team name is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="entryFee">Entry Fee $</label>
+            <input type="number" step="0.01" ng-model="tournamententry.entryFee" id="entryFee" name="entryFee" required placeholder="Enter entry fee"/>
+            <div ng-show="tournamentEntryForm.entryFee.$touched">
+                <div class="form-error" ng-show="tournamentEntryForm.entryFee.$error.required">Entry Fee is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="priority">Priority</label>
+            <input type="number" ng-model="tournamententry.priority" id="priority" name="priority" placeholder="Enter priority"/>
+        </div>
+        <div>
+            <label for="status">Status</label>
+            <select id="status" name="status" required ng-model="tournamententry.status"
+                    ng-options="item as item for item in statusList">
+                <option value="">Select Status</option>
+            </select>
+            <div ng-show="tournamentEntryForm.status.$touched">
+                <div class="form-error" ng-show="tournamentEntryForm.status.$error.required">Status is required!</div>
+            </div>
+        </div>
+    </fieldset>
+    <div>
+        <input type="button" ui-sref="tournamententrys" value="Cancel"/>
+        <input type="submit" ng-disabled="tournamentEntryForm.$invalid" value="Save"/>
+    </div>
+</form>

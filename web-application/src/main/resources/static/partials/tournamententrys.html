@@ -1,0 +1,41 @@
+<div class="search">
+    <!--Sidebar content-->
+    Search: <input ng-model="tournamentEntryNameFilter" size="16">
+</div>
+<div class="datagrid">
+<table>
+    <thead>
+        <th>Team Name</th>
+        <th>Tournament Name</th>
+        <th>Entry Fee</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="6">
+                <div>
+                <ul>
+                    <li>
+                        <a ui-sref="addTournamententry">Add Tournament Entry</a>
+                    </li>
+                </ul>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+    <tbody>
+    <tr ng-repeat="tournamententry in tournamententrys | filter:{name:tournamentEntrynameFilter} | orderBy:'name'" ng-class-even="class='alt'">
+        <td><a ui-sref="editTournamententry({objectLink: '{{tournamententry._links.self.href}}' })">{{tournamententry.tournamentName}}</a></td>
+        <td>{{tournamententry.teamName}}</td>
+        <td>{{tournamententry.entryFee | currency}}</td>
+        <td>{{tournamententry.priority}}</td>
+        <td>{{tournamententry.status}}</td>
+        <td>
+            <a class="button" ng-click="deleteObject(tournamententry)">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
