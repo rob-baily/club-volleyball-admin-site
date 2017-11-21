@@ -25,7 +25,7 @@
     </tfoot>
     <tbody>
     <tr ng-repeat="tournament in tournaments | filter:{name:tournamentnameFilter} | orderBy:'name'" ng-class-even="class='alt'">
-        <td><a ui-sref="edittournament({objectLink: '{{tournament._links.self.href}}' })">{{tournament.name}}</a></td>
+        <td><a ui-sref="editTournament({objectLink: '{{tournament._links.self.href}}' })">{{tournament.name}}</a></td>
         <td>{{tournament.location}}</td>
         <td>{{tournament.startDate| date : 'MM/dd/yyyy'}}</td>
         <td>
