@@ -29,7 +29,7 @@
     </tfoot>
     <tbody>
     <tr ng-repeat="tournamententry in tournamententrys | filter:{name:tournamentEntrynameFilter} | orderBy:'name'" ng-class-even="class='alt'">
-        <td><a ui-sref="editTournamententry({objectLink: '{{tournamententry._links.self.href}}' })">{{tournamententry.tournamentName}}</a></td>
+        <td><a ui-sref="editTournamententry({objectLink: '{{tournamententry._links.self.href}}', dateProperties: ['checkDate'] })">{{tournamententry.tournamentName}}</a></td>
         <td>{{tournamententry.teamName}}</td>
         <td>{{tournamententry.entryFee | currency}}</td>
         <td>{{tournamententry.priority}}</td>

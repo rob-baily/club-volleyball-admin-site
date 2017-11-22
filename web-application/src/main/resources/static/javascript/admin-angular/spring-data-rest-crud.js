@@ -160,6 +160,7 @@ angular.module("spring-data-rest-crud")
                         params: {  // make sure these can be passed through
                             useLastObject: false,
                             objectLink: {value : "" },
+                            dateProperties: [],
                             oldName: ''
                         }
                     }).state('add' + this.objectTypeIdUpper, { //state for adding object
@@ -299,6 +300,13 @@ angular.module("spring-data-rest-crud")
                     } else {
                         this.dataRestResource.load($stateParams.objectLink, function(response) {
                             $log.debug("edit response: " + controller.stateManager.objectTypeId);
+                            if ($stateParams.dateProperties) {
+                                $stateParams.dateProperties.forEach(
+                                    function (dateProperty) {
+                                        response[dateProperty] = new Date(response[dateProperty]);
+                                    }
+                                );
+                            }
                             $scope[controller.stateManager.objectTypeId] = response;
                             // store the current object if we are using that service
                             if (controller.objectService) {
