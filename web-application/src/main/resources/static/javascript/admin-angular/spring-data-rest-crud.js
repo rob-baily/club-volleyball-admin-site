@@ -1,5 +1,5 @@
 /**
- * Last updated on 10/26/2016.
+ * Last updated on 11/22/2017.
  * Contains Angular module to do Spring Data Rest operations in Angular UI.
  */
 
