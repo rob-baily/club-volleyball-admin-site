@@ -8,11 +8,12 @@
         <th>Name</th>
         <th>Location</th>
         <th>Start Date</th>
+        <th>Event System</th>
         <th>Actions</th>
     </thead>
     <tfoot>
         <tr>
-            <td colspan="4">
+            <td colspan="5">
                 <div>
                 <ul>
                     <li>
@@ -28,6 +29,7 @@
         <td><a ui-sref="editTournament({objectLink: '{{tournament._links.self.href}}', dateProperties: ['startDate'] })">{{tournament.name}}</a></td>
         <td>{{tournament.location}}</td>
         <td>{{tournament.startDate| date : 'MM/dd/yyyy'}}</td>
+        <td>{{tournament.eventSystem}}</td>
         <td>
             <a class="button" ng-click="deleteObject(tournament)">Delete</a>
         </td>

@@ -1,0 +1,27 @@
+<form novalidate name="eventSystemForm" class="admin-form" ng-submit="updateObject()">
+    <fieldset>
+        <div>
+            <label for="name">System Name</label>
+            <input type="text" ng-model="eventsystem.name" id="name" name="name" required placeholder="Enter system name"/>
+            <div ng-show="eventSystemForm.name.$touched">
+                <div class="form-error" ng-show="eventSystemForm.name.$error.required">Systemname is required!</div>
+            </div>
+        </div>
+        <div>
+            <label for="siteUrl">Site URL</label>
+            <input type="text" ng-model="eventsystem.siteURL" id="siteUrl" name="siteUrl"/>
+        </div>
+        <div>
+            <label for="userName">User Name</label>
+            <input type="text" ng-model="eventsystem.userName" id="userName" name="userName"/>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="text" ng-model="eventsystem.password" id="password" name="password"/>
+        </div>
+    </fieldset>
+    <div>
+        <input type="button" ui-sref="eventsystems" value="Cancel"/>
+        <input type="submit" ng-disabled="eventSystemForm.$invalid" value="Save"/>
+    </div>
+</form>

@@ -1,0 +1,17 @@
+<ul class="pagination" ng-show="page.totalPages > 1">
+    <li ng-class="{disabled: page.number == 0}">
+        <a ng-click="searchParameters.page = 0">&laquo;</a>
+    </li>
+    <li ng-class="{disabled: page.number == 0}">
+        <a ng-click="searchParameters.page = page.number - 1">Prev</a>
+    </li>
+    <li ng-repeat="n in [] | pagingFilter: page.number:page.totalPages:5" ng-class="{active: n == page.number}">
+        <a ng-click="searchParameters.page = n">{{n + 1}}</a>
+    </li>
+    <li ng-class="{disabled: page.number == page.totalPages - 1}">
+        <a ng-click="searchParameters.page = page.number + 1">Next</a>
+    </li>
+    <li ng-class="{disabled: page.number == page.totalPages - 1}">
+        <a ng-click="searchParameters.page = page.totalPages - 1">&raquo;</a>
+    </li>
+</ul>

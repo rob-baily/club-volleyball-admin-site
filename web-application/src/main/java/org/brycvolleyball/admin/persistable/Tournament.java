@@ -11,6 +11,7 @@ public class Tournament {
 	private String name;
 	private String location;
 	private Date startDate;
+	private String eventSystem;
 
 	public String getTournamentId() {
 		return tournamentId;
@@ -42,5 +43,13 @@ public class Tournament {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
+	}
+
+	public String getEventSystem() {
+		return eventSystem;
+	}
+
+	public void setEventSystem(String eventSystem) {
+		this.eventSystem = eventSystem;
 	}
 }

@@ -21,6 +21,16 @@
                 <div class="form-error" ng-show="tournamentForm.startDate.$error.required">Start Date is required!</div>
             </div>
         </div>
+        <div>
+            <label for="eventSystem">Event System</label>
+            <select id="eventSystem" name="eventSystem" required ng-model="tournament.eventSystem"
+                    ng-options="item.name as item.name for item in eventSystemList">
+                <option value="">Select Event System</option>
+            </select>
+            <div ng-show="tournamentEntryForm.eventSystem.$touched">
+                <div class="form-error" ng-show="tournamentEntryForm.eventSystem.$error.required">Event system is required!</div>
+            </div>
+        </div>
     </fieldset>
     <div>
         <input type="button" ui-sref="tournaments" value="Cancel"/>
