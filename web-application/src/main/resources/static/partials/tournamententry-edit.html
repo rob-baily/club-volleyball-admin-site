@@ -21,6 +21,10 @@
             </div>
         </div>
         <div>
+            <label for="ageGroup">Age Group</label>
+            <input ng-model="tournamententry.ageGroup" id="ageGroup" name="ageGroup" placeholder="Enter age group you are entering"/>
+        </div>
+        <div>
             <label for="entryFee">Entry Fee $</label>
             <input type="number" step="0.01" ng-model="tournamententry.entryFee" id="entryFee" name="entryFee" required placeholder="Enter entry fee"/>
             <div ng-show="tournamentEntryForm.entryFee.$touched">
@@ -30,6 +34,10 @@
         <div>
             <label for="priority">Priority</label>
             <input type="number" ng-model="tournamententry.priority" id="priority" name="priority" placeholder="Enter priority if multiple tournaments planned for same weekend"/>
+        </div>
+        <div>
+            <label for="comments">Comments</label>
+            <textarea rows=4 cols=40 name="comments" id="comments" ng-model="tournamententry.comments"></textarea>
         </div>
         <div>
             <label for="status">Status</label>

@@ -19,6 +19,8 @@ public class TournamentEntry {
 	String tournamentEntryId;
 	String teamName;
 	String tournamentName;
+	String ageGroup;
+	String comments;
 	double entryFee;
 	Integer priority;
 	StatusType status;
@@ -47,6 +49,22 @@ public class TournamentEntry {
 
 	public void setTournamentName(String tournamentName) {
 		this.tournamentName = tournamentName;
+	}
+
+	public String getAgeGroup() {
+		return ageGroup;
+	}
+
+	public void setAgeGroup(String ageGroup) {
+		this.ageGroup = ageGroup;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 
 	public StatusType getStatus() {
