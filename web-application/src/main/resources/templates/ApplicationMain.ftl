@@ -1,8 +1,15 @@
+<#import "security.ftl" as security />
 <!doctype html>
 <html lang="en" ng-app="mainApp">
 <head>
     <meta charset="utf-8">
     <title>BRYC Data Administration</title>
+    <script src="/javascript/admin-angular/security.js"></script>
+<@security.authorize ifAnyGranted="ROLE_ADMIN">
+    <script>
+        hasAdminAccess = true;
+    </script>
+</@security.authorize>
     <script src="/javascript/angularjs/angular.js"></script>
     <script src="/javascript/angularjs/angular-resource.js"></script>
     <script src="/javascript/angularjs/angular-ui-router.js"></script>

@@ -99,6 +99,7 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
         { name: "Teams", view: "teams"},
         { name: "Users", view: "users"}
     ];
+    $scope.hasAdminAccess = hasAdminAccess;
 
   $scope.goToPage = function(pageView) {
     console.log("go to page");
