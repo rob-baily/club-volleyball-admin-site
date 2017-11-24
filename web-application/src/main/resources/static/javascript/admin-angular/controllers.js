@@ -17,14 +17,20 @@ function StatusListHelper() {
     }
 }
 
-function TournamententryHelper(statusListHelper, teamRestResource, tournamentRestResource) {
+function TeamListHelper(teamRestResource) {
     this.setupValues = function (scope) {
-        statusListHelper.setupValues(scope);
-        scope.tournamententry.status = "Submitted";
         var teamQuerySettings = {pathAddition : "search/findAllByOrderByTeamNameAsc"};
         teamRestResource.query(function (response) {
             scope.teamList = response;
         }, teamQuerySettings);
+    }
+}
+
+function TournamententryHelper(statusListHelper, teamListHelperManager, tournamentRestResource) {
+    this.setupValues = function (scope) {
+        statusListHelper.setupValues(scope);
+        teamListHelperManager.setupValues(scope);
+        scope.tournamententry.status = "Submitted";
         var tournamentQuerySettings = {pathAddition : "search/findAllByOrderByNameAsc"};
         tournamentRestResource.query(function (response) {
             scope.tournamentList = response;
@@ -74,6 +80,9 @@ angular.module("mainApp.services", ['spring-data-rest-crud'])
 }).factory('TeamControllerManager', function(SpringDataRestController, TeamStateManager, TeamRestResource) {
     console.log("create TeamControllerManager");
     return SpringDataRestController.getInstance(TeamStateManager,TeamRestResource);
+}).factory('TeamListHelperManager', function(TeamRestResource) {
+    return new TeamListHelper(TeamRestResource);
+
 
 }).factory('TournamentRestResource', function(SpringDataRestResource) {
     return SpringDataRestResource.getInstance('/api/tournaments/');
@@ -100,8 +109,8 @@ angular.module("mainApp.services", ['spring-data-rest-crud'])
             pageSize: 15
         }
     );
-}).factory('TournamententryHelperManager', function(StatusListHelperManager, TeamRestResource, TournamentRestResource) {
-    return new TournamententryHelper(StatusListHelperManager, TeamRestResource, TournamentRestResource);
+}).factory('TournamententryHelperManager', function(StatusListHelperManager, TeamListHelperManager, TournamentRestResource) {
+    return new TournamententryHelper(StatusListHelperManager, TeamListHelperManager, TournamentRestResource);
 });
 
 angular.module('mainApp.controllers', []).controller('AdminListController', function($scope, $state) {
@@ -151,8 +160,9 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
     TournamentControllerManager.controlAdd($scope, $state);
     TournamentHelperManager.setupValues($scope);
 
-}).controller('TournamententryListController', function($scope, $state, TournamentEntryControllerManager, StatusListHelperManager) {
+}).controller('TournamententryListController', function($scope, $state, TournamentEntryControllerManager, StatusListHelperManager, TeamListHelperManager) {
     StatusListHelperManager.setupValues($scope);
+    TeamListHelperManager.setupValues($scope);
     TournamentEntryControllerManager.controlList($scope, $state);
 }).controller('TournamententryEditController', function($scope, $state, $stateParams, TournamentEntryControllerManager, TournamententryHelperManager) {
     TournamentEntryControllerManager.controlEdit($scope, $state, $stateParams);
