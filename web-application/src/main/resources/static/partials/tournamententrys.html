@@ -1,6 +1,4 @@
 <div class="search">
-    <!--Sidebar content-->
-    Search: <input ng-model="tournamentEntryNameFilter" size="16">
     <div>
         <label for="searchStatus">Status</label>
         <select id="searchStatus" name="searchStatus" ng-model="searchParameters.status"
@@ -36,7 +34,7 @@
         </tr>
     </tfoot>
     <tbody>
-    <tr ng-repeat="tournamententry in tournamententrys | filter:{name:tournamentEntrynameFilter} | orderBy:'name'" ng-class-even="class='alt'">
+    <tr ng-repeat="tournamententry in tournamententrys | orderBy:'name'" ng-class-even="class='alt'">
         <td><a ui-sref="editTournamententry({objectLink: '{{tournamententry._links.self.href}}', dateProperties: ['checkDate'] })">{{tournamententry.tournamentName}}</a></td>
         <td>{{tournamententry.teamName}}</td>
         <td>{{tournamententry.entryFee | currency}}</td>
