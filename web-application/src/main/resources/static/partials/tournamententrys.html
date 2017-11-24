@@ -1,6 +1,13 @@
 <div class="search">
     <!--Sidebar content-->
     Search: <input ng-model="tournamentEntryNameFilter" size="16">
+    <div>
+        <label for="searchStatus">Status</label>
+        <select id="searchStatus" name="searchStatus" ng-model="searchParameters.status"
+                ng-options="item as item for item in statusList">
+            <option value="">All Statuses</option>
+        </select>
+    </div>
 </div>
 <div class="datagrid">
 <table>
