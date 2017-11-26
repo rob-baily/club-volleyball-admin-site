@@ -141,8 +141,12 @@ angular.module("spring-data-rest-crud")
             };
 
             SpringDataRestStateManager.prototype = {
+                getAddState : function() {
+                    return 'add' + this.objectTypeIdUpper;
+                },
+
                 getEditState : function() {
-                    return this.objectTypeId;
+                    return 'edit' + this.objectTypeIdUpper;
                 },
 
                 getListState : function() {
@@ -154,7 +158,7 @@ angular.module("spring-data-rest-crud")
                     stateProvider.state(this.getListState(), { // state for showing all objects
                         templateUrl: 'partials/' + this.getListState() + '.html',
                         controller: this.objectTypeIdUpper + 'ListController'
-                    }).state('edit' + this.objectTypeIdUpper, { //state for editing object
+                    }).state(this.getEditState(), { //state for editing object
                         templateUrl: 'partials/' + this.objectTypeId + '-edit.html',
                         controller: this.objectTypeIdUpper + 'EditController',
                         params: {  // make sure these can be passed through
@@ -163,9 +167,12 @@ angular.module("spring-data-rest-crud")
                             dateProperties: [],
                             oldName: ''
                         }
-                    }).state('add' + this.objectTypeIdUpper, { //state for adding object
+                    }).state(this.getAddState(), { //state for adding object
                         templateUrl: 'partials/' + this.objectTypeId + '-edit.html',
                         controller: this.objectTypeIdUpper + 'AddController',
+                        params: {  // make sure these can be passed through
+                            cloneObject: {}
+                        }
                     });
 
                 }
@@ -318,7 +325,7 @@ angular.module("spring-data-rest-crud")
                     }
                 },
 
-                controlAdd : function($scope, $state) {
+                controlAdd : function($scope, $state, $stateParams) {
                     var controller = this;
                     $scope.updateObject = function() { //Update the newly added object.
                         $scope[controller.stateManager.objectTypeId].save(function() {
@@ -327,6 +334,11 @@ angular.module("spring-data-rest-crud")
                     };
 
                     $scope[this.stateManager.objectTypeId] = this.dataRestResource.newObject();
+                    if ($stateParams && $stateParams.cloneObject) {
+                        for(var prop in $stateParams.cloneObject) {
+                            $scope[this.stateManager.objectTypeId][prop]=$stateParams.cloneObject[prop];
+                        }
+                    }
                     // store the current object if we are using that service
                     if (this.objectService) {
                         this.objectService.setCurrentObject($scope[this.stateManager.objectTypeId]);

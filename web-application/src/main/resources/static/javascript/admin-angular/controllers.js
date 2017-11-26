@@ -160,17 +160,27 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
     TournamentControllerManager.controlAdd($scope, $state);
     TournamentHelperManager.setupValues($scope);
 
-}).controller('TournamententryListController', function($scope, $state, TournamentEntryControllerManager, StatusListHelperManager, TeamListHelperManager) {
+}).controller('TournamententryListController', function($scope, $state, TournamentEntryStateManager, TournamentEntryControllerManager, StatusListHelperManager, TeamListHelperManager) {
     StatusListHelperManager.setupValues($scope);
     TeamListHelperManager.setupValues($scope);
     TournamentEntryControllerManager.controlList($scope, $state);
+    $scope.cloneEntry = function (tournamentEntry) {
+        var clonedObject = {
+            tournamentName : tournamentEntry.tournamentName,
+            teamName : tournamentEntry.teamName,
+            ageGroup : tournamentEntry.ageGroup,
+            priority : tournamentEntry.priority,
+            entryFee : tournamentEntry.entryFee,
+            comments : tournamentEntry.comments
+        };
+        $state.go(TournamentEntryStateManager.getAddState(),{cloneObject : clonedObject});
+    };
 }).controller('TournamententryEditController', function($scope, $state, $stateParams, TournamentEntryControllerManager, TournamententryHelperManager) {
     TournamentEntryControllerManager.controlEdit($scope, $state, $stateParams);
     TournamententryHelperManager.setupValues($scope);
-}).controller('TournamententryAddController', function($scope, $state, TournamentEntryControllerManager, TournamententryHelperManager) {
-    TournamentEntryControllerManager.controlAdd($scope, $state);
+}).controller('TournamententryAddController', function($scope, $state, $stateParams, TournamentEntryControllerManager, TournamententryHelperManager) {
+    TournamentEntryControllerManager.controlAdd($scope, $state, $stateParams);
     TournamententryHelperManager.setupValues($scope);
-
 });
 
 var $stateProviderRef = null;

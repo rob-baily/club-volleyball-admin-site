@@ -52,6 +52,7 @@
         <td>{{tournamententry.checkNumber}}</td>
         <td>{{tournamententry.checkDate| date : 'MM/dd/yyyy'}}</td>
         <td>
+            <a class="button" ng-click="cloneEntry(tournamententry)">Clone</a>
             <a class="button" ng-click="deleteObject(tournamententry)">Delete</a>
         </td>
     </tr>
