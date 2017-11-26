@@ -105,7 +105,7 @@ angular.module("mainApp.services", ['spring-data-rest-crud'])
     console.log("create TournamentEntryControllerManager");
     return SpringDataRestController.getInstance(TournamentEntryStateManager,TournamentEntryRestResource,
         {
-            searchPath: 'search/findTournamentEntries',
+            searchPath: 'search/findTournamentEntries?sort=tournamentName&sort=teamName',
             searchParameters: { status : "" },
             pageSize: 15
         }
