@@ -35,6 +35,7 @@ function TournamententryHelper(statusListHelper, teamListHelperManager, tourname
         tournamentRestResource.query(function (response) {
             scope.tournamentList = response;
         }, tournamentQuerySettings);
+        scope.hasAdminAccess = hasAdminAccess;
     }
 }
 

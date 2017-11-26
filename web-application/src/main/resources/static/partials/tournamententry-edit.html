@@ -51,11 +51,11 @@
         </div>
         <div>
             <label for="checkNumber">Check Number</label>
-            <input type="number" ng-model="tournamententry.checkNumber" id="checkNumber" name="checkNumber"/>
+            <input type="number" ng-readonly="!hasAdminAccess" ng-model="tournamententry.checkNumber" id="checkNumber" name="checkNumber"/>
         </div>
         <div>
             <label for="checkDate">Check Date</label>
-            <input type="date" ng-model="tournamententry.checkDate" id="checkDate" name="checkDate"/>
+            <input type="date" ng-readonly="!hasAdminAccess" ng-model="tournamententry.checkDate" id="checkDate" name="checkDate"/>
         </div>
     </fieldset>
     <div>
