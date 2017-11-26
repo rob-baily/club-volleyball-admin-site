@@ -1,5 +1,5 @@
 /**
- * Last updated on 11/22/2017.
+ * Last updated on 11/26/2017.
  * Contains Angular module to do Spring Data Rest operations in Angular UI.
  */
 
@@ -310,7 +310,9 @@ angular.module("spring-data-rest-crud")
                             if ($stateParams.dateProperties) {
                                 $stateParams.dateProperties.forEach(
                                     function (dateProperty) {
-                                        response[dateProperty] = new Date(response[dateProperty]);
+                                        if (response[dateProperty]) {
+                                            response[dateProperty] = new Date(response[dateProperty]);
+                                        }
                                     }
                                 );
                             }
