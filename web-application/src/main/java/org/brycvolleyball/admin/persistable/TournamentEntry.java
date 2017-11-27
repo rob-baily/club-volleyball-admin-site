@@ -24,6 +24,8 @@ public class TournamentEntry {
 	double entryFee;
 	Integer priority;
 	StatusType status;
+	boolean hotelRequired;
+	String hotelConfirmationNumber;
 	Integer checkNumber;
 	Date checkDate;
 
@@ -89,6 +91,22 @@ public class TournamentEntry {
 
 	public void setPriority(Integer priority) {
 		this.priority = priority;
+	}
+
+	public boolean isHotelRequired() {
+		return hotelRequired;
+	}
+
+	public void setHotelRequired(boolean hotelRequired) {
+		this.hotelRequired = hotelRequired;
+	}
+
+	public String getHotelConfirmationNumber() {
+		return hotelConfirmationNumber;
+	}
+
+	public void setHotelConfirmationNumber(String hotelConfirmationNumber) {
+		this.hotelConfirmationNumber = hotelConfirmationNumber;
 	}
 
 	public Integer getCheckNumber() {

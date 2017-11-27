@@ -36,6 +36,14 @@
             <input type="number" ng-model="tournamententry.priority" id="priority" name="priority" placeholder="Enter priority if multiple tournaments planned for same weekend"/>
         </div>
         <div>
+            <label for="hotelRequired">Hotel Required</label>
+            <input type="checkbox" ng-model="tournamententry.hotelRequired" id="hotelRequired" name="hotelRequired"/>
+        </div>
+        <div>
+            <label for="hotelConfirmationNumber">Hotel Confirmation</label>
+            <input type="text" ng-model="tournamententry.hotelConfirmationNumber" id="hotelConfirmationNumber" name="hotelConfirmationNumber"/>
+        </div>
+        <div>
             <label for="comments">Comments</label>
             <textarea rows=4 cols=40 name="comments" id="comments" ng-model="tournamententry.comments"></textarea>
         </div>
