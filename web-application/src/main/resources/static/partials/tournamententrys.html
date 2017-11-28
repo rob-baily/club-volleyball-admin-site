@@ -1,6 +1,10 @@
 <div class="search">
     <form>
         <div>
+            <label for="searchText">Text Search</label>
+            <input id="searchText" ng-model="searchParameters.textFilter" size="24">
+        </div>
+        <div>
             <label for="searchStatus">Status</label>
             <select id="searchStatus" name="searchStatus" ng-model="searchParameters.status"
                     ng-options="item as item for item in statusList">
