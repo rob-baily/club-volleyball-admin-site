@@ -12,10 +12,12 @@ public interface TournamentEntryRepository extends MongoRepository<TournamentEnt
 			"{ $or : [ { $or :  [ { $where: '\"?0\" == \" null \"' }, { $where: '\"?0\" == \"\"' } ] }, { status : '?0' } ] }" +
 			", { $or : [ { $or :  [ { $where: '\"?1\" == \" null \"' }, { $where: '\"?1\" == \"\"' } ] }, { teamName : '?1' } ] }" +
 			", { tournamentName : { $regex : '.*?2.*' , $options : 'i' } } " +
+			", { $or : [ { $or :  [ { $where: '\"?3\" == \" null \"' }, { $where: '\"?3\" == \"\"' } ] }, { checkNumber : ?3 } ] }" +
 			"] } ")
 	public Page<TournamentEntry> findTournamentEntries(
 			@Param("status") String status,
 			@Param("teamName") String teamName,
 			@Param("textFilter") String textFilter,
+			@Param("checkNumber") Integer checkNumber,
 			Pageable pageable);
 }

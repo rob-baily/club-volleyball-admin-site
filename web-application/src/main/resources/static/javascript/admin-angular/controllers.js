@@ -112,7 +112,7 @@ angular.module("mainApp.services", ['spring-data-rest-crud'])
     return SpringDataRestController.getInstance(TournamentEntryStateManager,TournamentEntryRestResource,
         {
             searchPath: 'search/findTournamentEntries?sort=tournamentName&sort=teamName',
-            searchParameters: { status : null, teamName: null, textFilter: "" },
+            searchParameters: { status : null, teamName: null, textFilter: "", checkNumber: null },
             pageSize: 15
         }
     );
