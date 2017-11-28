@@ -92,7 +92,13 @@ angular.module("mainApp.services", ['spring-data-rest-crud'])
     return SpringDataRestStateManager.getInstance('tournament');
 }).factory('TournamentControllerManager', function(SpringDataRestController, TournamentStateManager, TournamentRestResource) {
     console.log("create TournamentControllerManager");
-    return SpringDataRestController.getInstance(TournamentStateManager,TournamentRestResource);
+    return SpringDataRestController.getInstance(TournamentStateManager,TournamentRestResource,
+        {
+            searchPath: 'search/findAllByNameContainsIgnoreCaseOrderByNameAsc',
+            searchParameters: { name : "" },
+            pageSize: 10
+        }
+        );
 }).factory('TournamentHelperManager', function(EventSystemRestResource) {
     return new TournamentHelper(EventSystemRestResource);
 

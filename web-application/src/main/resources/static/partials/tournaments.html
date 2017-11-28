@@ -1,6 +1,6 @@
 <div class="search">
     <!--Sidebar content-->
-    Search: <input ng-model="tournamentNameFilter" size="16">
+    Search: <input ng-model="searchParameters.name" size="24">
 </div>
 <div class="datagrid">
 <table>
@@ -20,12 +20,13 @@
                         <a ui-sref="addTournament">Add Tournament</a>
                     </li>
                 </ul>
+                <ng-include src="'partials/pagination.html'"/>
                 </div>
             </td>
         </tr>
     </tfoot>
     <tbody>
-    <tr ng-repeat="tournament in tournaments | filter:{name:tournamentnameFilter} | orderBy:'name'" ng-class-even="class='alt'">
+    <tr ng-repeat="tournament in tournaments" ng-class-even="class='alt'">
         <td><a ui-sref="editTournament({objectLink: '{{tournament._links.self.href}}', dateProperties: ['startDate'] })">{{tournament.name}}</a></td>
         <td>{{tournament.location}}</td>
         <td>{{tournament.startDate| date : 'MM/dd/yyyy'}}</td>
