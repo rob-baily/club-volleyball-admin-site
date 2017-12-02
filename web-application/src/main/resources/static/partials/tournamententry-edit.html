@@ -11,6 +11,18 @@
             </div>
         </div>
         <div>
+            <label for="startDate">Start Date</label>
+            <input type="date" disabled ng-readonly="true" ng-model="tournament.startDate" id="startDate" name="startDate"/>
+        </div>
+        <div>
+            <label for="location">Location</label>
+            <input disabled ng-readonly="true" ng-model="tournament.location" id="location" name="location"/>
+        </div>
+        <div>
+            <label for="eventSystem">Event System</label>
+            <input disabled ng-readonly="true" ng-model="tournament.eventSystem" id="eventSystem" name="eventSystem"/>
+        </div>
+        <div>
             <label for="teamName">Team Name</label>
             <select id="teamName" name="teamName" required ng-model="tournamententry.teamName"
                     ng-options="item.teamName as item.teamName for item in teamList">

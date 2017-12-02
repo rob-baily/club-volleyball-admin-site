@@ -52,6 +52,11 @@
 .admin-form input.ng-valid.ng-touched {
     background-color: #78FA89;
 }
+
+.admin-form input:read-only {
+    background-color: lightgray;
+}
+
 /* Captured from http://tablestyler.com/ then formatted using http://unminify.com/ */
 .datagrid table {
     border-collapse: collapse;

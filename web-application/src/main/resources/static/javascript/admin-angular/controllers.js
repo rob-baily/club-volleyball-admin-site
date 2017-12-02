@@ -28,14 +28,32 @@ function TeamListHelper(teamRestResource) {
 
 function TournamententryHelper(statusListHelper, teamListHelperManager, tournamentRestResource) {
     this.setupValues = function (scope) {
+        scope.setTournamentInfo = function() {
+            scope.tournament = null;
+            if (scope.tournamententry.tournamentName && scope.tournamentList) {
+                scope.tournamentList.forEach(function(nextTournament) {
+                    if (nextTournament.name == scope.tournamententry.tournamentName) {
+                        scope.tournament = nextTournament;
+                    }
+                });
+            }
+        };
+
         statusListHelper.setupValues(scope);
         teamListHelperManager.setupValues(scope);
         scope.tournamententry.status = "Submitted";
         var tournamentQuerySettings = {pathAddition : "search/findAllByOrderByNameAsc"};
         tournamentRestResource.query(function (response) {
             scope.tournamentList = response;
+            scope.tournamentList.forEach(function(nextTournament) {
+                nextTournament.startDate = new Date(nextTournament.startDate);
+            });
+            scope.setTournamentInfo();
         }, tournamentQuerySettings);
         scope.hasAdminAccess = hasAdminAccess;
+        scope.$watch('tournamententry.tournamentName', function() {
+            scope.setTournamentInfo();
+        });
     }
 }
 
