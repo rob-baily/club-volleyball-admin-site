@@ -26,7 +26,7 @@
     </tfoot>
     <tbody>
     <tr ng-repeat="eventsystem in eventsystems | filter:{name:eventSystemNameFilter} | orderBy:'name'" ng-class-even="class='alt'">
-        <td><a ui-sref="editEventsystem({objectLink: '{{team._links.self.href}}' })">{{eventsystem.name}}</a></td>
+        <td><a ui-sref="editEventsystem({objectLink: '{{eventsystem._links.self.href}}' })">{{eventsystem.name}}</a></td>
         <td>{{eventsystem.siteURL}}</td>
         <td>{{eventsystem.userName}}</td>
         <td>{{eventsystem.password}}</td>
