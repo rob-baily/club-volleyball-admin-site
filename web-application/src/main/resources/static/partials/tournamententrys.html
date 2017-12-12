@@ -28,8 +28,8 @@
 <table>
     <thead>
         <th>Tournament Name</th>
-        <th>Team Name</th>
         <th>Date</th>
+        <th>Team Name</th>
         <th>Entry Fee</th>
         <th>Priority</th>
         <th>Status</th>
@@ -54,8 +54,8 @@
     <tbody>
     <tr ng-repeat="tournamententry in tournamententrys | orderBy:'name'" ng-class-even="class='alt'">
         <td><a ui-sref="editTournamententry({objectLink: '{{tournamententry._links.self.href}}', dateProperties: ['checkDate'] })">{{tournamententry.tournamentName}}</a></td>
-        <td>{{tournamententry.teamName}}</td>
         <td>{{dateForTournament(tournamententry.tournamentName)| date : 'MM/dd/yyyy'}}</td>
+        <td>{{tournamententry.teamName}}</td>
         <td>{{tournamententry.entryFee | currency}}</td>
         <td>{{tournamententry.priority}}</td>
         <td>{{tournamententry.status}}</td>
