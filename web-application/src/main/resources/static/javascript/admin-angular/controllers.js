@@ -185,7 +185,11 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
     TournamentControllerManager.controlAdd($scope, $state);
     TournamentHelperManager.setupValues($scope);
 
-}).controller('TournamententryListController', function($scope, $state, TournamentEntryStateManager, TournamentEntryControllerManager, StatusListHelperManager, TeamListHelperManager) {
+}).controller('TournamententryListController', function($scope, $state, TournamentEntryStateManager, TournamentEntryControllerManager, StatusListHelperManager, TeamListHelperManager, TournamentRestResource) {
+    // load tournaments to show dates
+    TournamentRestResource.query(function (response) {
+        $scope.tournamentList = response;
+    });
     StatusListHelperManager.setupValues($scope);
     TeamListHelperManager.setupValues($scope);
     TournamentEntryControllerManager.controlList($scope, $state);
@@ -199,6 +203,15 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
             comments : tournamentEntry.comments
         };
         $state.go(TournamentEntryStateManager.getAddState(),{cloneObject : clonedObject});
+    };
+    $scope.dateForTournament = function (tournamentName) {
+        var dateToReturn = null;
+        $scope.tournamentList.forEach(function(nextTournament) {
+            if (nextTournament.name == tournamentName) {
+                dateToReturn = new Date(nextTournament.startDate);
+            }
+        });
+        return dateToReturn;
     };
 }).controller('TournamententryEditController', function($scope, $state, $stateParams, TournamentEntryControllerManager, TournamententryHelperManager) {
     TournamentEntryControllerManager.controlEdit($scope, $state, $stateParams);
