@@ -3,7 +3,7 @@
         <div>
             <label for="tournamentName">Tournament Name</label>
             <select id="tournamentName" name="tournamentName" required ng-model="tournamententry.tournamentName"
-                    ng-options="item.name as item.name for item in tournamentList">
+                    ng-options="item.name as item.name + ' ' + (item.startDate | date:'MM/dd/yyyy') for item in tournamentList">
                 <option value="">Select Tournament</option>
             </select>
             <div ng-show="tournamentEntryForm.tournamentName.$touched">
