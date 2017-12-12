@@ -187,9 +187,10 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
 
 }).controller('TournamententryListController', function($scope, $state, TournamentEntryStateManager, TournamentEntryControllerManager, StatusListHelperManager, TeamListHelperManager, TournamentRestResource) {
     // load tournaments to show dates
+    var tournamentQuerySettings = {pathAddition : "search/findAllByOrderByNameAsc"};
     TournamentRestResource.query(function (response) {
         $scope.tournamentList = response;
-    });
+    }, tournamentQuerySettings);
     StatusListHelperManager.setupValues($scope);
     TeamListHelperManager.setupValues($scope);
     TournamentEntryControllerManager.controlList($scope, $state);
