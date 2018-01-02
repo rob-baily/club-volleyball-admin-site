@@ -12,7 +12,8 @@ public class TournamentEntry {
 		Paid,
 		Accepted,
 		Withdrawn,
-		Cancelled
+		Cancelled,
+		Denied
 	}
 
 	@Id

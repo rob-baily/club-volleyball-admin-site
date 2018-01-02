@@ -12,7 +12,8 @@ function StatusListHelper() {
             "Paid",
             "Accepted",
             "Withdrawn",
-            "Cancelled"
+            "Cancelled",
+            "Denied"
         ];
     }
 }
