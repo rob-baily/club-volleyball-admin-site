@@ -10,6 +10,7 @@ function StatusListHelper() {
             "Submitted",
             "Registered",
             "Paid",
+            "Waitlist",
             "Accepted",
             "Withdrawn",
             "Cancelled",

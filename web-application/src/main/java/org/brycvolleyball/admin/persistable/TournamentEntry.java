@@ -10,6 +10,7 @@ public class TournamentEntry {
 		Submitted,
 		Registered,
 		Paid,
+		Waitlist,
 		Accepted,
 		Withdrawn,
 		Cancelled,
