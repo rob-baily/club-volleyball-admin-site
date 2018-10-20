@@ -1,11 +1,13 @@
 package org.brycvolleyball.admin.security;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -16,6 +18,11 @@ public class SpringSecurityConfigurer {
 	@Configuration
 	@ConfigurationProperties(prefix = "web-security")
     public static class DefaultWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
+
+		@Bean
+		public static NoOpPasswordEncoder passwordEncoder() {
+			return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+		}
 
 		@Configuration
 		@Order(1)
