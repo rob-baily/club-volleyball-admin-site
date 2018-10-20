@@ -29,7 +29,7 @@
     <tr ng-repeat="tournament in tournaments" ng-class-even="class='alt'">
         <td><a ui-sref="editTournament({objectLink: '{{tournament._links.self.href}}', dateProperties: ['startDate'] })">{{tournament.name}}</a></td>
         <td>{{tournament.location}}</td>
-        <td>{{tournament.startDate| date : 'MM/dd/yyyy'}}</td>
+        <td>{{tournament.startDate| date : 'MM/dd/yyyy' : 'UTC'}}</td>
         <td>{{tournament.eventSystem}}</td>
         <td>
             <a class="button" ng-click="deleteObject(tournament)">Delete</a>

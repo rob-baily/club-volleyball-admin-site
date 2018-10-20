@@ -16,7 +16,7 @@
         </div>
         <div>
             <label for="startDate">Start Date</label>
-            <input type="date" ng-model="tournament.startDate" id="startDate" name="startDate" required placeholder="Enter tournament starting date"/>
+            <input type="date" ng-model="tournament.startDate" ng-model-options="{timezone:'UTC'}" id="startDate" name="startDate" required placeholder="Enter tournament starting date"/>
             <div ng-show="tournamentForm.startDate.$touched">
                 <div class="form-error" ng-show="tournamentForm.startDate.$error.required">Start Date is required!</div>
             </div>
