@@ -29,13 +29,17 @@ function TeamListHelper(teamRestResource) {
 }
 
 function TournamententryHelper(statusListHelper, teamListHelperManager, tournamentRestResource) {
-    this.setupValues = function (scope) {
+    this.setupValues = function (scope, newRecord) {
         scope.setTournamentInfo = function() {
             scope.tournament = null;
             if (scope.tournamententry.tournamentName && scope.tournamentList) {
                 scope.tournamentList.forEach(function(nextTournament) {
                     if (nextTournament.name == scope.tournamententry.tournamentName) {
-                        scope.tournament = nextTournament;
+                        // copy info over from the tournament to the entry
+                        scope.tournamententry.startDate = nextTournament.startDate;
+                        scope.tournamententry.location = nextTournament.location;
+                        scope.tournamententry.eventSystem = nextTournament.eventSystem;
+                        scope.tournamententry = scope.tournamententry;
                     }
                 });
             }
@@ -53,9 +57,12 @@ function TournamententryHelper(statusListHelper, teamListHelperManager, tourname
             scope.setTournamentInfo();
         }, tournamentQuerySettings);
         scope.hasAdminAccess = hasAdminAccess;
-        scope.$watch('tournamententry.tournamentName', function() {
-            scope.setTournamentInfo();
-        });
+        scope.newRecord = newRecord ? true : false;
+        if (scope.newRecord) {
+            scope.$watch('tournamententry.tournamentName', function() {
+                scope.setTournamentInfo();
+            });
+        }
     }
 }
 
@@ -199,6 +206,9 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
     $scope.cloneEntry = function (tournamentEntry) {
         var clonedObject = {
             tournamentName : tournamentEntry.tournamentName,
+            startDate : tournamentEntry.startDate,
+            location : tournamentEntry.location,
+            eventSystem : tournamentEntry.eventSystem,
             teamName : tournamentEntry.teamName,
             ageGroup : tournamentEntry.ageGroup,
             priority : tournamentEntry.priority,
@@ -207,21 +217,12 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
         };
         $state.go(TournamentEntryStateManager.getAddState(),{cloneObject : clonedObject});
     };
-    $scope.dateForTournament = function (tournamentName) {
-        var dateToReturn = null;
-        $scope.tournamentList.forEach(function(nextTournament) {
-            if (nextTournament.name == tournamentName) {
-                dateToReturn = new Date(nextTournament.startDate);
-            }
-        });
-        return dateToReturn;
-    };
 }).controller('TournamententryEditController', function($scope, $state, $stateParams, TournamentEntryControllerManager, TournamententryHelperManager) {
     TournamentEntryControllerManager.controlEdit($scope, $state, $stateParams);
     TournamententryHelperManager.setupValues($scope);
 }).controller('TournamententryAddController', function($scope, $state, $stateParams, TournamentEntryControllerManager, TournamententryHelperManager) {
     TournamentEntryControllerManager.controlAdd($scope, $state, $stateParams);
-    TournamententryHelperManager.setupValues($scope);
+    TournamententryHelperManager.setupValues($scope, true);
 });
 
 var $stateProviderRef = null;

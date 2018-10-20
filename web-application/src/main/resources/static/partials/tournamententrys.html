@@ -53,14 +53,14 @@
     </tfoot>
     <tbody>
     <tr ng-repeat="tournamententry in tournamententrys | orderBy:'name'" ng-class-even="class='alt'">
-        <td><a ui-sref="editTournamententry({objectLink: '{{tournamententry._links.self.href}}', dateProperties: ['checkDate'] })">{{tournamententry.tournamentName}}</a></td>
-        <td>{{dateForTournament(tournamententry.tournamentName)| date : 'MM/dd/yyyy'}}</td>
+        <td><a ui-sref="editTournamententry({objectLink: '{{tournamententry._links.self.href}}', dateProperties: ['startDate','checkDate'] })">{{tournamententry.tournamentName}}</a></td>
+        <td>{{tournamententry.startDate | date : 'MM/dd/yyyy' : 'UTC'}}</td>
         <td>{{tournamententry.teamName}}</td>
         <td>{{tournamententry.entryFee | currency}}</td>
         <td>{{tournamententry.priority}}</td>
         <td>{{tournamententry.status}}</td>
         <td>{{tournamententry.checkNumber}}</td>
-        <td>{{tournamententry.checkDate| date : 'MM/dd/yyyy'}}</td>
+        <td>{{tournamententry.checkDate| date : 'MM/dd/yyyy' : 'UTC'}}</td>
         <td>
             <a class="button" ng-click="cloneEntry(tournamententry)">Clone</a>
             <a class="button" ng-click="deleteObject(tournamententry)">Delete</a>

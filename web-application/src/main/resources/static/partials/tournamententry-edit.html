@@ -1,26 +1,30 @@
 <form novalidate name="tournamentEntryForm" class="admin-form" ng-submit="updateObject()">
     <fieldset>
-        <div>
+        <div ng-show="newRecord">
             <label for="tournamentName">Tournament Name</label>
             <select id="tournamentName" name="tournamentName" required ng-model="tournamententry.tournamentName"
-                    ng-options="item.name as item.name + ' ' + (item.startDate | date:'MM/dd/yyyy') for item in tournamentList">
+                    ng-options="item.name as item.name + ' ' + (item.startDate | date:'MM/dd/yyyy' : 'UTC') for item in tournamentList">
                 <option value="">Select Tournament</option>
             </select>
             <div ng-show="tournamentEntryForm.tournamentName.$touched">
                 <div class="form-error" ng-show="tournamentEntryForm.tournamentName.$error.required">Tournament name is required!</div>
             </div>
         </div>
+        <div ng-show="!newRecord">
+            <label for="tournamentName">Tournament Name</label>
+            <input ng-readonly="true" ng-model="tournamententry.tournamentName" id="tournamentName" name="location"/>
+        </div>
         <div>
             <label for="startDate">Start Date</label>
-            <input type="date" disabled ng-readonly="true" ng-model="tournament.startDate" id="startDate" name="startDate"/>
+            <input type="date" ng-readonly="true" ng-model="tournamententry.startDate" ng-model-options="{timezone:'UTC'}" id="startDate" name="startDate"/>
         </div>
         <div>
             <label for="location">Location</label>
-            <input disabled ng-readonly="true" ng-model="tournament.location" id="location" name="location"/>
+            <input ng-readonly="true" ng-model="tournamententry.location" id="location" name="location"/>
         </div>
         <div>
             <label for="eventSystem">Event System</label>
-            <input disabled ng-readonly="true" ng-model="tournament.eventSystem" id="eventSystem" name="eventSystem"/>
+            <input ng-readonly="true" ng-model="tournamententry.eventSystem" id="eventSystem" name="eventSystem"/>
         </div>
         <div>
             <label for="teamName">Team Name</label>
@@ -75,7 +79,7 @@
         </div>
         <div>
             <label for="checkDate">Check Date</label>
-            <input type="date" ng-readonly="!hasAdminAccess" ng-model="tournamententry.checkDate" id="checkDate" name="checkDate"/>
+            <input type="date" ng-readonly="!hasAdminAccess" ng-model="tournamententry.checkDate" ng-model-options="{timezone:'UTC'}" id="checkDate" name="checkDate"/>
         </div>
     </fieldset>
     <div>

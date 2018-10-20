@@ -18,18 +18,21 @@ public class TournamentEntry {
 	}
 
 	@Id
-	String tournamentEntryId;
-	String teamName;
-	String tournamentName;
-	String ageGroup;
-	String comments;
-	double entryFee;
-	Integer priority;
-	StatusType status;
-	boolean hotelRequired;
-	String hotelConfirmationNumber;
-	Integer checkNumber;
-	Date checkDate;
+	private String tournamentEntryId;
+	private String teamName;
+	private String tournamentName;
+	private String location;
+	private Date startDate;
+	private String eventSystem;
+	private String ageGroup;
+	private String comments;
+	private double entryFee;
+	private Integer priority;
+	private StatusType status;
+	private boolean hotelRequired;
+	private String hotelConfirmationNumber;
+	private Integer checkNumber;
+	private Date checkDate;
 
 	public String getTournamentEntryId() {
 		return tournamentEntryId;
@@ -125,5 +128,29 @@ public class TournamentEntry {
 
 	public void setCheckDate(Date checkDate) {
 		this.checkDate = checkDate;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEventSystem() {
+		return eventSystem;
+	}
+
+	public void setEventSystem(String eventSystem) {
+		this.eventSystem = eventSystem;
 	}
 }
