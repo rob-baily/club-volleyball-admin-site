@@ -33,13 +33,14 @@
         <th>Entry Fee</th>
         <th>Priority</th>
         <th>Status</th>
+        <th>System</th>
         <th>Check #</th>
         <th>Check Date</th>
         <th>Actions</th>
     </thead>
     <tfoot>
         <tr>
-            <td colspan="9">
+            <td colspan="10">
                 <div>
                 <ul>
                     <li>
@@ -59,11 +60,12 @@
         <td>{{tournamententry.entryFee | currency}}</td>
         <td>{{tournamententry.priority}}</td>
         <td>{{tournamententry.status}}</td>
+        <td>{{tournamententry.eventSystem}}</td>
         <td>{{tournamententry.checkNumber}}</td>
         <td>{{tournamententry.checkDate| date : 'MM/dd/yyyy' : 'UTC'}}</td>
         <td>
             <a class="button" ng-click="cloneEntry(tournamententry)">Clone</a>
-            <a class="button" ng-click="deleteObject(tournamententry)">Delete</a>
+            <a ng-show="hasAdminAccess || tournamententry.status == 'Submitted'" class="button" ng-click="deleteObject(tournamententry)">Delete</a>
         </td>
     </tr>
     </tbody>

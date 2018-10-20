@@ -195,14 +195,10 @@ angular.module('mainApp.controllers', []).controller('AdminListController', func
     TournamentHelperManager.setupValues($scope);
 
 }).controller('TournamententryListController', function($scope, $state, TournamentEntryStateManager, TournamentEntryControllerManager, StatusListHelperManager, TeamListHelperManager, TournamentRestResource) {
-    // load tournaments to show dates
-    var tournamentQuerySettings = {pathAddition : "search/findAllByOrderByNameAsc"};
-    TournamentRestResource.query(function (response) {
-        $scope.tournamentList = response;
-    }, tournamentQuerySettings);
     StatusListHelperManager.setupValues($scope);
     TeamListHelperManager.setupValues($scope);
     TournamentEntryControllerManager.controlList($scope, $state);
+    $scope.hasAdminAccess = hasAdminAccess;
     $scope.cloneEntry = function (tournamentEntry) {
         var clonedObject = {
             tournamentName : tournamentEntry.tournamentName,
