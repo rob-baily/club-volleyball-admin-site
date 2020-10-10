@@ -27,3 +27,7 @@ hs_err_pid*
 
 @ Spring boot
 config
+
+# Maven
+log/
+target/
