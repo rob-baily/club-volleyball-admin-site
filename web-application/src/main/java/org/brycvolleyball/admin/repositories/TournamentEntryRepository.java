@@ -9,10 +9,10 @@ import org.springframework.data.repository.query.Param;
 
 public interface TournamentEntryRepository extends MongoRepository<TournamentEntry,String> {
 	@Query("{ $and : [ " +
-			"{ $or : [ { $or :  [ { $where: '\"?0\" == \" null \"' }, { $where: '\"?0\" == \"\"' } ] }, { status : '?0' } ] }" +
-			", { $or : [ { $or :  [ { $where: '\"?1\" == \" null \"' }, { $where: '\"?1\" == \"\"' } ] }, { teamName : '?1' } ] }" +
+			"{ $or : [ { $or :  [ { $expr: { $eq: [ '?0', 'null']}}, { $expr: {$eq: ['?0',''] }} ] }, { status : '?0' } ] }" +
+			", { $or : [ { $or :  [ { $expr: { $eq: [ '?1', 'null']}}, { $expr: {$eq: ['?1',''] }} ] }, { teamName : '?1' } ] }" +
 			", { tournamentName : { $regex : '.*?2.*' , $options : 'i' } } " +
-			", { $or : [ { $or :  [ { $where: '\"?3\" == \" null \"' }, { $where: '\"?3\" == \"\"' } ] }, { checkNumber : ?3 } ] }" +
+			", { $or : [ { $or :  [ { $expr: { $eq: [ '?3', 'null']}}, { $expr: {$eq: ['?3',''] }} ] }, { checkNumber : '?3' } ] }" +
 			"] } ")
 	public Page<TournamentEntry> findTournamentEntries(
 			@Param("status") String status,
